@@ -1,13 +1,18 @@
 <template>
-    <div class="border border-neutral-600 p-2 flex justify-between">
-        <div>{{ day }}</div>
-    </div>
+    <tr>
+        <td>{{ day }}</td>
+        <td v-for="(value, act) in activities">
+            <input type="checkbox"/>
+        </td>
+    </tr>
+    
 </template>
 
 <script lang="ts" setup>
 
 const props = defineProps<{
-    day : string
+    day : string,
+    activities : { [key: string]: boolean }
 }>()
 
 </script>
