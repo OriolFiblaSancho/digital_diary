@@ -1,1 +1,69 @@
 @import "tailwindcss";
+
+/* v-calendar: match site's dark neutral + indigo palette */
+.vc-container.vc-dark {
+	/* Base surface/foreground */
+	--vc-bg: #171717; /* neutral-900 */
+	--vc-color: #ffffff;
+	--vc-border: #404040; /* neutral-700 */
+	--vc-hover-bg: rgba(79, 70, 229, 0.18); /* indigo-600 tint */
+	--vc-focus-ring: 0 0 0 2px rgba(99, 102, 241, 0.65); /* indigo-500 */
+
+	/* Header */
+	--vc-header-arrow-color: #d4d4d8; /* neutral-300-ish */
+	--vc-header-arrow-hover-bg: #262626; /* neutral-800 */
+	--vc-header-title-color: #e5e7eb; /* gray-200 */
+
+	/* Weekday / weeknumber */
+	--vc-weekday-color: #a3a3a3; /* neutral-400 */
+	--vc-weeknumber-color: #737373; /* neutral-500 */
+
+	/* Nav */
+	--vc-nav-hover-bg: #404040; /* neutral-700 */
+	--vc-nav-title-color: #e5e7eb;
+	--vc-nav-item-hover-box-shadow: none;
+	--vc-nav-item-active-color: #ffffff;
+	--vc-nav-item-active-bg: var(--vc-accent-500);
+	--vc-nav-item-active-box-shadow: none;
+	--vc-nav-item-current-color: var(--vc-accent-400);
+
+	/* Popover content */
+	--vc-popover-content-color: #e5e7eb;
+	--vc-popover-content-bg: #262626; /* neutral-800 */
+	--vc-popover-content-border: #404040; /* neutral-700 */
+
+	/* Day popover container */
+	--vc-day-popover-container-color: #111827;
+	--vc-day-popover-container-bg: #ffffff;
+	--vc-day-popover-container-border: #e5e7eb;
+	--vc-day-popover-header-color: #a3a3a3;
+
+	/* Time picker */
+	--vc-time-picker-border: #404040;
+	--vc-time-weekday-color: #a3a3a3;
+	--vc-time-month-color: var(--vc-accent-400);
+	--vc-time-day-color: var(--vc-accent-400);
+	--vc-time-year-color: #737373;
+	--vc-time-select-group-bg: #374151; /* subtle contrast */
+	--vc-time-select-group-border: #52525b;
+	--vc-time-select-group-icon-color: var(--vc-accent-400);
+	--vc-select-color: #e5e7eb;
+	--vc-select-bg: #3f3f46;
+	--vc-select-hover-bg: #52525b;
+
+	/* Day cell */
+	--vc-day-content-hover-bg: rgba(79, 70, 229, 0.18); /* indigo-600 */
+	--vc-day-content-disabled-color: #525252; /* neutral-600 */
+
+	/* Accent: indigo scale to match buttons (bg-indigo-600 hover:bg-indigo-700) */
+	--vc-accent-50: #eef2ff;
+	--vc-accent-100: #e0e7ff;
+	--vc-accent-200: #c7d2fe;
+	--vc-accent-300: #a5b4fc;
+	--vc-accent-400: #818cf8;
+	--vc-accent-500: #6366f1; /* base */
+	--vc-accent-600: #4f46e5; /* hover */
+	--vc-accent-700: #4338ca;
+	--vc-accent-800: #3730a3;
+	--vc-accent-900: #312e81;
+}

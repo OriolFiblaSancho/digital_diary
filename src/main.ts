@@ -3,4 +3,10 @@ import './style.css'
 import App from './App.vue'
 import { Icon } from "@iconify/vue";
 
-createApp(App).mount('#app')
+import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
+
+const app = createApp(App)
+
+app.use(VCalendar, {})
+app.mount('#app')

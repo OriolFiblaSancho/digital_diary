@@ -6,4 +6,5 @@
 
 <script setup lang="ts">
 import DiaryTable from './modules/diary/pages/DiaryTable.vue';
+
 </script>
