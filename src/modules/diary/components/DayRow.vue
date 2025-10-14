@@ -1,8 +1,8 @@
 <template>
     <tr>
-        <td>{{ day }}</td>
+        <td class="text-left">{{ day }}</td>
         <td v-for="(value, act) in activities">
-            <input type="checkbox"/>
+            <input class="w-6 h-6" type="checkbox"/>
         </td>
     </tr>
     

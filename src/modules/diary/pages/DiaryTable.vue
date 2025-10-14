@@ -1,13 +1,15 @@
 <template>
-    <table class="text-white">
+    <table class="text-white w-200 h-100 text-2xl text-center">
         <thead>
-            <th>Day</th>
-            <th v-for="col in cols">
-                {{ col }}
-            </th>   
+            <tr>
+                <th class="text-left px-3 py-2">Day</th>
+                <th v-for="col in cols" :key="col" class="px-3 py-2">
+                    {{ col }}
+                </th>
+            </tr>   
         </thead>
         <tbody>
-            <DayRow v-for="day in days" :day="day.name" :activities="day.activities"/>
+            <DayRow v-for="day in days" :key="day.name" :day="day.name" :activities="day.activities"/>
         </tbody>
     </table>
 </template>
@@ -35,7 +37,7 @@ import DayRow from '../components/DayRow.vue';
             "Read": false,
             "Code": false,
             "Sleep": false,
-            "Eat": false,
+            "Eat": true,
             "Walk": false
         }
     },
@@ -101,7 +103,5 @@ import DayRow from '../components/DayRow.vue';
     }
 ]
 
-const cols = ["Gym ", "Study ", "Read ", "Code ", "Sleep ", "Eat ", "Walk "]
-
-
+const cols = ["Gym", "Study", "Read", "Code", "Sleep", "Eat", "Walk"]
 </script>

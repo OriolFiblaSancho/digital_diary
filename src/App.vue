@@ -1,5 +1,5 @@
 <template >
-  <main class="min-h-screen w-screen bg-neutral-800">
+  <main class="min-h-screen w-screen bg-neutral-800 flex justify-center items-center">
     <DiaryTable/>
   </main>
 </template>
