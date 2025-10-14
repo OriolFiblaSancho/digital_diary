@@ -1,22 +1,23 @@
 <template>
-  <div class="p-4 w-full flex justify-center">
-    <div class="w-full max-w-6xl overflow-x-auto rounded-lg border border-neutral-700 bg-neutral-800 shadow">
-      <table class="min-w-full text-white text-xl text-center">
+  <div class="p-4 w-full h-full flex justify-center">
+    <div class="w-auto max-w-6xl overflow-x-auto rounded-lg border border-neutral-700 bg-neutral-800 shadow">
+      <table class="min-w-full text-white text-xl text-center mb-1">
         <thead>
           <tr class="border-b border-neutral-700 bg-neutral-900/70">
-            <th class="text-left px-3 py-2">Day</th>
-            <th v-for="col in cols" :key="col.key" class="px-2 py-2 font-medium">
+            <th class="text-left px-3 py-2 w-30">Day</th>
+            <th v-for="col in cols" :key="col.key" class="px-2 font-medium">
               {{ col.label }}
             </th>
-            <th class="text-center align-middle w-10">
+            <th class="text-center align-middle w-15">
               <button 
                 @click="toggleCreateModal()"
-                class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1 px-2 rounded flex items-center justify-center"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-2 rounded flex items-center justify-center"
                 style="margin: 0 auto;"
               >
-                <span class="text-xl leading-none">+</span>
+                <Icon icon="heroicons:plus-16-solid" />
               </button>
             </th>
+            <th></th>
           </tr>
         </thead>
 
@@ -30,13 +31,13 @@
               @update-activity="onUpdateActivity"
             />
             <tr>
-              <td></td>
-              <td :colspan="cols.length + 1" class="px-3 py-2 text-center align-middle">
+              <td :colspan="cols.length" class="  py-1 text-center align-middle overflow-none">
                 <input
                   v-model="day.highlight"
                   type="text"
                   placeholder="Highlight of the day"
                   class="w-full rounded px-2 py-1 bg-neutral-700 text-white text-center text-sm"
+                  maxlength="50"
                 />
               </td>
             </tr>
@@ -52,6 +53,7 @@
 import { ref } from 'vue'
 import DayRow from '../components/DayRow.vue'
 import CreateActivityModal from '../components/CreateActivityModal.vue'
+import { Icon } from '@iconify/vue';
 type Col = { key: string; label: string; type: 'checkbox' | 'text'; size?: string }
 
 const cols = ref<Col[]>([

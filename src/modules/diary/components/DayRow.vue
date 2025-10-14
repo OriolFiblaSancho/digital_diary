@@ -1,10 +1,10 @@
 <template>
-    <tr class="odd:bg-neutral-800 even:bg-neutral-700">
-        <td class="px-2 py-2 text-left font-medium">
+    <tr class="bg-neutral-800 border-t border-neutral-700">
+            <td rowspan="2" class="text-center font-medium align-middle">
             {{ day }}
         </td>
 
-        <td v-for="col in cols" :key="col.key" class="px-2 py-2 text-center">
+        <td v-for="col in cols" :key="col.key" class="w-30 pt-1 text-center">
             <template v-if="col.type === 'checkbox'">
                 <input type="checkbox" :checked="activities[col.key] as boolean"
                     @change="onCheckboxChange($event, col.key)" class="h-5 w-5 text-indigo-500 accent-indigo-500" />
@@ -12,8 +12,9 @@
 
             <template v-else>
                 <input type="text" :value="activities[col.key] as string" @input="onTextInput($event, col.key)"
-                    :class="['rounded px-2 py-1 bg-neutral-700 text-white text-sm',
-                        col.size === 'sm' ? 'w-24' : col.size === 'md' ? 'w-40' : 'w-64']"
+                    :class="['rounded bg-neutral-700 text-white text-center text-xl',
+                        col.size === 'sm' ? 'w-12' : col.size === 'md' ? 'w-24' : 'w-64']"
+                    :maxlength=" col.size === 'sm' ? '3' : col.size === 'md' ? '8' : '24' "
                 />
             </template>
         </td>
