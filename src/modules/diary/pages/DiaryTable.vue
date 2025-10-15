@@ -75,6 +75,8 @@
         is-dark
         show-weeknumbers
         class="min-w-[320px] md:min-w-[640px]"
+        v-model="selectedDate"
+        :attributes="calendarAttributes"
       />
     </div>
   </div>
@@ -85,6 +87,9 @@ import { ref } from 'vue'
 import DayRow from '../components/DayRow.vue'
 import CreateActivityModal from '../components/CreateActivityModal.vue'
 import { Icon } from '@iconify/vue';
+import { useDiaryWeekStore } from '@/modules/diary/stores/useDiaryWeekstore';
+import { storeToRefs } from 'pinia';
+import type { CalendarDay } from '@/modules/common/interfaces/CalendarDay.interface';
 
 type Col = { key: string; label: string; type: 'checkbox' | 'text'; size?: string }
 
@@ -94,6 +99,16 @@ const cols = ref<Col[]>([
   { key: 'Read', label: 'Read', type: 'checkbox' },
   { key: 'SleepH', label: 'SleepH', type: 'text', size: 'sm' },
 ])
+const dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+
+const days = ref(dayNames.map(name => ({ name, activities: createActivity(), highlight: '' })))
+
+const viewCalendar = ref(false)
+const viewCreateModal = ref(false)
+
+const weekStore = useDiaryWeekStore()
+
+weekStore.setDayId(3,2,23)
 
 function createNewActivity(activity: { name: string; type: 'checkbox' | 'text'; size?: string }) {
   cols.value.push({ key: activity.name, label: activity.name, type: activity.type, size: activity.size })
@@ -110,9 +125,6 @@ function createActivity(): Record<string, boolean | string> {
   return activity
 }
 
-const viewCalendar = ref(false)
-const viewCreateModal = ref(false)
-
 function toggleCalendar() {
   viewCalendar.value = !viewCalendar.value
 }
@@ -121,14 +133,22 @@ function toggleCreateModal() {
   viewCreateModal.value = !viewCreateModal.value
 }
 
-const dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-
-const days = ref(dayNames.map(name => ({ name, activities: createActivity(), highlight: '' })))
 
 function onUpdateActivity(payload: { dayIndex: number; key: string; value: boolean | string }) {
   const { dayIndex, key, value } = payload
   days.value[dayIndex].activities[key] = value
 }
 
-// highlight is now handled directly via v-model in the bottom row
+// Calendar things
+const selectedDate = ref<Date>(new Date())
+const calendarAttributes = ref([
+  {
+    key: 'today',
+    dates: new Date(),
+    highlight: {
+      color: 'indigo',
+      fillMode: 'light',
+    },
+  },
+])
 </script>
